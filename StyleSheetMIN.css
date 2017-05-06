@@ -13,7 +13,7 @@ label {
   font-weight: bold;
   font-size: smaller;
   text-align: left;
-   /*color: black;*/
+   color: black;
 }
 h3 {
 
@@ -108,12 +108,12 @@ h2 {
   height: 200px;
 }
 .TxtArea {
-  font-family: Arial,Helvetica,sans-serif;d
+  font-family: Arial,Helvetica,sans-serif;
   font-weight: bold;
-  /*color:black;*/
+  color:black;
   background-color:whitesmoke;
   font-size: small;
-  /*width:300px;*/
+  width:300px;
   
 }
 .StateArea {
@@ -124,7 +124,7 @@ h2 {
   color:black;
   width:101px;
  }
-.RadioLabel/
+.RadioLabel
 {
  font-family: Arial,Helvetica,sans-serif;
   font-weight: normal;
@@ -162,20 +162,10 @@ h2 {
     border-style: solid;
     width: 500px;
     height: 400px;
-    /*top: 140px;*/
+    top: 200px;
     left: 50%;
     position: absolute;
     /*margin-top: -200px;*/
     margin-left: -250px;
-    text-align:left;
-   padding-top: 20px;
-  padding-left: 10px;
-  padding-right: 20px;
 }
-.ItemText
-{
-  font-family: Arial,Helvetica,sans-serif;
-  font-weight: normal;
-  font-size: small;
-  /*color:black;*/
-}
+

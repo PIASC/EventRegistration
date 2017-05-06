@@ -68,17 +68,16 @@
     <%--<%=sOutput %>--%>
         <div class="box2">
         <label for="txtAmount">Amount Due:</label><input class="TxtArea" name="txtAmount" id="txtAmount" ="10" value="<%=sAmountDue %>"/><br/><br/>
-        <label for="txtCoName">Name:</label><input class="TxtArea" name="txtFName" value="<%=fName %>" style="width:150px" placeholder="First Name"/><input class="TxtArea" name="txtLName" value="<%=lName %>" style="width:150px"  placeholder="Last Name"/><br/>
-        <label for="txtAddress">Address:</label><input class="TxtArea" name="txtAddress"  id="txtAddress" value="" style="width:300px"/><br />
-        <label for="txtCity">City:</label><input class="TxtArea" name="txtCity"  id="txtCity" value=""/ style="width:300px"/><br />
-        <label for="txtState">State:</label><input class="StateArea" name="txtState"  id="txtState" value="" style="width:50px"/>
-        <label for="txtZip">Zip:</label><input class="StateArea" name="txtZip"  id="txtZip" value="" style="width:100px"/><br /><br />
-        <label for="txtCC">Card Number:</label><input class="StateArea" name="txtCC"  id="txtCC" value="4111111111111111"  style="width:250px"/><br />
-        <label for="txtExpDt">Expiration:</label><input class="StateArea" name="txtExpDt"  id="txtExpDt" value=""  style="width:75px"  placeholder="  mmyy"/><label for="txtSecNo">Security Code:</label><input class="StateArea" name="txtSecNo"  id="txtSecNo" value="" style="width:75px"/><br />
+        <label for="txtCoName">Name:</label><input class="TxtArea" name="txtFName" size="20" value="<%=fName %>"/><input class="TxtArea" name="txtLName"  size="20" value="<%=lName %>"/><br/><br/>
+        <label for="txtAddress">Address:</label><input class="TxtArea" name="txtAddress"  id="txtAddress" value=""/><br />
+        <label for="txtCity">City:</label><input class="TxtArea" name="txtCity"  id="txtCity" value=""/><br />
+        <label for="txtState">State:</label><input class="StateArea" name="txtState"  id="txtState" value="" size="2"/>
+        <label for="txtZip">Zip:</label><input class="StateArea" name="txtZip"  id="txtZip" value="" size="2"/><br />
+        <label for="txtCC">Card Number:</label><input class="StateArea" name="txtCC"  id="txtCC" value="" size="1"/><br />
+        <label for="txtExpDt">Expiration:</label><input class="StateArea" name="txtExpDt"  id="txtExpDt" value="" size="1"/><label for="txtSecNo">Security Code:</label><input class="StateArea" name="txtSecNo"  id="txtSecNo" value="" size="1"/><br />
         <br /><br />
             <input type="hidden" id="GuestName"  name="GuestName" value="<%=gName%>" /><input type="hidden" id="GuestMeal"  name="GuestMeal" value="<%=gMeal%>" /><input type="hidden" id="Meal"  name="Meal" value="<%=Meal%>"/>
-            <input type="hidden" id="PIASC"  name="PIASC" value="<%=PIASC%>" /><input type="hidden" id="IPM"  name="IPM" value="<%=IPM%>" /><input type="hidden" id="PPAC"  name="PPAC" value="<%=PPAC%>" />
-            <input id="ButtonPay" type="button" value="Make Payment" onclick="GoToNext()" />
+        <input id="ButtonPay" type="button" value="Make Payment" onclick="GoToNext()" />
           </div>  
     </div>
     </form>

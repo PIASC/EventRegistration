@@ -1,0 +1,48 @@
+public void getEmployersDropDowndata()
+{
+    private static string connectionString = Constants.CONNECTION_STRING;
+           string queryString = "select A.*,B.BANKNAME from EMPLOYER A join ROUTINGNOS B on A.TRANSITNO=B.BANKROUTINGNUMBER where EMPLOYERID=" + EmployerID;
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                connection.Open();
+                OracleDataReader EmployerData;
+                EmployerData = command.ExecuteReader();
+    		if (EmployerData.HasRows)
+ 		{
+        		ddlEmployers.DataSource = EmployerData;
+        		ddlEmployers.DataValueField = "EMPLOYERID";
+        		ddlEmployers.DataTextField="ACCTNAME";
+        		ddlEmployers.DataBind();
+    		}
+   		else
+    		{
+       	 		MessageBox.Show("No is found");
+        		CloseConnection = new Connection();
+        		CloseConnection.closeConnection(); // close the connection 
+    		}
+	     }
+}
+
+public void getClientNameDropDowndata()
+{
+    getConnection = Connection.SetConnection(); // to connect with data base Configure manager
+    string ClientName = "Select  ClientName from Client ";
+    SqlCommand ClientNameCommand = new SqlCommand(ClientName, getConnection);
+    ClientNameCommand.CommandType = CommandType.Text;
+    SqlDataReader ClientNameData;
+    ClientNameData = ClientNameCommand.ExecuteReader();
+    if (ClientNameData.HasRows)
+    {
+        DropDownList_ClientName.DataSource = ClientNameData;
+        DropDownList_ClientName.DataValueField = "ClientName";
+        DropDownList_ClientName.DataTextField="ClientName";
+        DropDownList_ClientName.DataBind();
+    }
+    else
+    {
+        MessageBox.Show("No is found");
+        CloseConnection = new Connection();
+        CloseConnection.closeConnection(); // close the connection 
+    }
+}

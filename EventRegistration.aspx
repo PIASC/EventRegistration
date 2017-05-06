@@ -16,7 +16,8 @@
      }
      function ShowHideButton() {
          var button = document.getElementById("ButtonReserve");
-         //donation.style.display = RadioB.checked ? "block" : "none";0    
+         //donation.style.display = RadioB.checked ? "block" : "none";
+         
          button.style.display = "block";
      }
      function ShowHideGuest(RadioB) {
@@ -32,11 +33,10 @@
          LName = document.getElementById('txtLName').value;
          Company = document.getElementById('txtCoName').value;
          Email = document.getElementById('txtEMail').value;
-         //emailExp = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([org\net\com\co\.\in])+$/; // to validate email id
-         emailExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-         cGuest = document.getElementById('CheckGuest').checked;
+         emailExp = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([com\co\.\in])+$/; // to validate email id
+         cGuest = document.getElementById('CheckGuest').value;
          gName = document.getElementById('txtGuestName').value;
-         //alert(document.getElementById('CheckGuest').checked);
+         
          if (FName == '' && LName == '' && Company == '' && Email == '') 
          {
              alert('Enter All Fields');
@@ -71,7 +71,7 @@
                  return false;
              }
          }
-         if (cGuest  && gName=='') {
+         if (cGuest == '1' && gName=='') {
              alert('Please Enter Guest Name');
              return false;
          }
@@ -88,14 +88,14 @@
    <form id="fRegister" runat="server">
 <h3>Let us know you’ll be in attendance by choosing the options below! <br />If you have any questions, please don’t hesitate to email us!</h3>
 <div class="box2">
-<label for="txtCoName">Your Name:</label><input class="TxtArea" id="txtFName" name="txtFName" style="width:145px" placeholder="First Name"/><input class="TxtArea" id="txtLName"  name="txtLName"   style="width:150px"  placeholder="Last Name"/><br/>
-<label for="txtCoName">Company:</label><input class="TxtArea" name="txtCoName" id="txtCoName" style="width:300px"/><br/>
-<label for="txtCoName">EMail:</label><input class="TxtArea" id="txtEMail" name="txtEMail" style="width:300px"/><br/><label class="RadioLabel">Select Meal:</label>
+<label for="txtCoName">Your Name:</label><input class="TxtArea" id="txtFName" name="txtFName" size="50"/><input class="TxtArea" id="txtLName"  name="txtLName"  size="50"/><br/>
+<label for="txtCoName">Company:</label><input class="TxtArea" name="txtCoName" id="txtCoName"/><br/>
+<label for="txtCoName">EMail:</label><input class="TxtArea" id="txtEMail" name="txtEMail"/><br/><label class="RadioLabel">Select Meal:</label>
     <input id="Radio1" type="radio" name="rMeal"  value="Filet Mignon" onchange="ShowHideButton()"/><label class="RadioLabel">Filet Mignon  </label><input id="Radio2" type="radio" name="rMeal" value="Chilean Sea Bass" onchange="ShowHideButton()" /><label class="RadioLabel">Chilean Sea Bass</label>  <input id="Radio3" type="radio" name="rMeal" value="Vegetarian Pasta"  onchange="ShowHideButton()"/><label class="RadioLabel">Vegetarian Pasta</label><br/>
 <br /><input id="CheckGuest"  name="CheckGuest" type="checkbox" value="1" onchange="ShowHideDiv(this)"/><label class="QuestionLabel">I will be bringing spouse/guest ($200 charge). </label><br /><br />
 
 <div id="guest" class="box3" <%--style="display: none"--%>> 
-<label for="txtCoName">Guest Name:</label><input class="TxtArea" id="txtGuestName" name="txtGuestName" value=""  style="width:300px"/><br/><label class="RadioLabel">Select Meal:</label><br />
+<label for="txtCoName">Guest Name:</label><input class="TxtArea" id="txtGuestName" name="txtGuestName" value=""/><br/><label class="RadioLabel">Select Meal:</label><br />
         <input id="Radiog1" type="radio" name="gMeal" value="Filet Mignon" onchange="ShowHideButton()" /><label class="RadioLabel">Filet Mignon  </label><input id="Radiog2" type="radio" name="gMeal" value="Chilean Sea Bass" onchange="ShowHideButton()"  /><label class="RadioLabel">Chilean Sea Bass</label>  <input id="Radiog3" type="radio" name="gMeal" value="Vegetarian Pasta"  onchange="ShowHideButton()" /><label class="RadioLabel">Vegetarian Pasta</label><br/>
 </div>
 <%--<div id="donation" class="box4" style="display: none"> 

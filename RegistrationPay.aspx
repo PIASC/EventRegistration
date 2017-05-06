@@ -56,7 +56,7 @@ This dynamic museum is devoted to bringing the history of books, printing, and t
 
        <p>PrintPAC   
        
-            <asp:DropDownList ID="PPACDonate" name="PPACDonate" AutoPostBack="True"  OnSelectedIndexChanged="PIASCAddToTotal" runat="server">
+            <asp:DropDownList ID="PPAC" name="PPACDonate" AutoPostBack="True"  OnSelectedIndexChanged="PIASCAddToTotal" runat="server">
                         <asp:ListItem Text="0" Value="0" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="$50" Value="50"></asp:ListItem>
                         <asp:ListItem Text="$100" Value="100"></asp:ListItem>
@@ -68,12 +68,12 @@ This dynamic museum is devoted to bringing the history of books, printing, and t
            <div class="donationList">
 The official political action committee of Printing Industries of America, is the industry’s most important means of impacting public policy direction and debate pertaining to issues affecting printing and graphic communications companies. PIA member company CEOs, presidents and executive management unite through PrintPAC to support federal candidates that are willing to defend and advance pro-print, pro-business legislation in Washington, DC.
 
-          <%-- </div>      
-</div>--%>
+           </div>      
+</div>
 
         <input type="hidden" id="fName" name="fName" value="<%=fName%>" /><input type="hidden" id="lName" name="lName" value="<%=lName%>" /><input type="hidden" id="gName"  name="gName" value="<%=gName%>" /><input type="hidden" id="Meal"  name="Meal" value="<%=Meal%>" /><input type="hidden" id="gMeal"  name="gMeal" value="<%=gMeal%>" /><input type="hidden" id="AmountDue"  name="AmountDue" value="<%=AmountDue%>" />
   <div>
-    <br /><input id="ButtonComplete" type="button" class="Button" value="Complete Registration" onclick="GoToNext()" style="align-self:center"/>
+    <input id="ButtonComplete" type="button" class="Button" value="Complete Registration" onclick="GoToNext()" />
  </div>
     </form>
 </body>

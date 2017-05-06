@@ -1,0 +1,38 @@
+CREATE OR REPLACE TRIGGER dept_bir 
+BEFORE INSERT ON departments 
+FOR EACH ROW
+WHEN (new.id IS NULL)
+BEGIN
+  :new.id := dept_seq.NEXTVAL;
+END;
+/
+Test it using the automatic and manual population methods.
+
+SQL> INSERT INTO departments (description)
+  2  VALUES ('Development');
+
+1 row created.
+
+SQL> SELECT * FROM departments;
+
+        ID DESCRIPTION
+---------- --------------------------------------------------
+         1 Development
+
+1 row selected.
+
+SQL> INSERT INTO departments (id, description)
+  2  VALUES (dept_seq.NEXTVAL, 'Accounting');
+
+1 row created.
+
+SQL> SELECT * FROM departments;
+
+        ID DESCRIPTION
+---------- --------------------------------------------------
+         1 Development
+         2 Accounting
+
+2 rows selected.
+
+SQL>
