@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8vRZrKBb7U20segT9EJWOwAAAAACAAAAAAAQZgAAAAEAACAAAAA5pcaTGX+yRZm4aEEwvbvrPmKLn6M1KT+nNnSAfPi/1wAAAAAOgAAAAAIAACAAAACNGchPJgmZ3L4xhjiLW3+4YhFntScSOcbehlpJLgabfiAAAAD1AfygViIbTlHGdOcinIqMoQAAJdgs2S0OylhocARt8UAAAAB8wIccObDcJyDbJmWSQQUkZq9+lN80u4OAmOdVUYPvBB0AdDeKZ/xVZYESR78JxcBqc7DKNfjmAG/qKORA/rG/</EncryptedPassword>
+    <_PublishTargetUrl>D:\CGC\LouACH\Deploy</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AuthorizeNet.dll">
+      <publishTime>12/26/2016 14:20:31</publishTime>
+    </File>
+    <File Include="bin/LouACH.dll">
+      <publishTime>05/04/2017 12:02:46</publishTime>
+    </File>
+    <File Include="bin/LouACH.pdb">
+      <publishTime>05/04/2017 12:02:45</publishTime>
+    </File>
+    <File Include="bin/Oracle.ManagedDataAccess.dll">
+      <publishTime>06/24/2016 11:06:40</publishTime>
+    </File>
+    <File Include="bin/Oracle.ManagedDataAccess.EntityFramework.dll">
+      <publishTime>06/24/2016 11:25:40</publishTime>
+    </File>
+    <File Include="EventMakePayment.aspx">
+      <publishTime>05/03/2017 15:50:41</publishTime>
+    </File>
+    <File Include="EventReceipt.aspx">
+      <publishTime>05/04/2017 14:42:53</publishTime>
+    </File>
+    <File Include="EventRegistration.aspx">
+      <publishTime>05/03/2017 11:05:09</publishTime>
+    </File>
+    <File Include="Main.aspx">
+      <publishTime>05/01/2017 10:17:25</publishTime>
+    </File>
+    <File Include="MembershipApp.aspx">
+      <publishTime>04/28/2017 13:19:43</publishTime>
+    </File>
+    <File Include="packages/AuthorizeNet.1.9.1/AuthorizeNet.1.9.1.nupkg">
+      <publishTime>12/26/2016 14:20:31</publishTime>
+    </File>
+    <File Include="packages/AuthorizeNet.1.9.1/lib/AuthorizeNet.dll">
+      <publishTime>12/26/2016 14:20:31</publishTime>
+    </File>
+    <File Include="packages/AuthorizeNet.1.9.1/lib/AuthorizeNet.xml">
+      <publishTime>12/26/2016 14:20:31</publishTime>
+    </File>
+    <File Include="RegistrationPay.aspx">
+      <publishTime>05/03/2017 15:31:40</publishTime>
+    </File>
+    <File Include="StyleSheetMIN.css">
+      <publishTime>05/04/2017 14:27:38</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/04/2017 13:10:43</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,8 @@
+D:\CGC\LouPrinter\sample-code-csharp-master\SampleCode.exe.config
+D:\CGC\LouPrinter\sample-code-csharp-master\obj\Debug\SampleCode.csprojResolveAssemblyReference.cache
+D:\CGC\LouPrinter\sample-code-csharp-master\obj\Debug\SampleCode.exe
+D:\CGC\LouPrinter\sample-code-csharp-master\obj\Debug\SampleCode.pdb
+D:\CGC\LouPrinter\sample-code-csharp-master\SampleCode.exe
+D:\CGC\LouPrinter\sample-code-csharp-master\SampleCode.pdb
+D:\CGC\LouPrinter\sample-code-csharp-master\AuthorizeNet.dll
+D:\CGC\LouPrinter\sample-code-csharp-master\AuthorizeNet.xml
