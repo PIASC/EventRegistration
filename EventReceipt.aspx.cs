@@ -14,11 +14,14 @@ namespace LouACH
 
     public partial class EventReceipt : System.Web.UI.Page
     {
- 
-        public static string apiLoginId1 = Constants.API_LOGIN_ID;
-        public static string transactionKey1 = Constants.TRANSACTION_KEY;
-        public static string apiLoginId2 = Constants.API_LOGIN_ID2;
-        public static string transactionKey2 = Constants.TRANSACTION_KEY2;
+
+        public static string apiLoginId;
+        public static string transactionKey;
+
+        //public static string apiLoginId1 = Constants.API_LOGIN_ID;
+        //public static string transactionKey1 = Constants.TRANSACTION_KEY;
+        //public static string apiLoginId2 = Constants.API_LOGIN_ID2;
+        //public static string transactionKey2 = Constants.TRANSACTION_KEY2;
         public static string sOutput = "";
         public static creditCardType creditCard;
         public static customerAddressType customerAddress;
@@ -51,7 +54,8 @@ namespace LouACH
         protected void Page_Load(object sender, EventArgs e)
         {
             string Item = "";
-            decimal UnitPrice = 0.00m;
+            //decimal UnitPrice = 0.00m;
+            int Account = 1;
             customerAddress = new customerAddressType
             {
                 firstName = LouACH.RegistrationPay.person.PersonfName,  //"John",
@@ -90,7 +94,19 @@ namespace LouACH
                         Item = dr.GetString(5);
                         UnitPrice = dr.GetDecimal(4);
                         lineItems = new lineItemType { itemId = "1", name = Item, quantity = 1, unitPrice = UnitPrice };
-                        var response = net.authorize.sample.ChargeCreditCard.Run(apiLoginId1, transactionKey1, Decimal.ToInt32(UnitPrice));
+                        Account = dr.GetInt32(6);
+                        switch (Account)
+                        {
+                            case 1:
+                               apiLoginId = Constants.API_LOGIN_ID;
+                               transactionKey = Constants.TRANSACTION_KEY;
+                                break;
+                            case 2:
+                               apiLoginId = Constants.API_LOGIN_ID2;
+                               transactionKey = Constants.TRANSACTION_KEY2;
+                                break;
+                        }
+                        var response = net.authorize.sample.ChargeCreditCard.Run(apiLoginId, transactionKey, Decimal.ToInt32(UnitPrice));
                         TransactionMessages = TransactionMessages + "<br/>" + Item + "-" + UnitPrice.ToString("C") + "<br/>&nbsp;&nbsp;" + TransactionMessage;
                     }
                     command.Connection.Close();

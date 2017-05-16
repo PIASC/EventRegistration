@@ -316,7 +316,7 @@ namespace LouACH.DataBaseTransactions
         }
         public static string SaveTransaction(LouACH.Events.EventTransaction transaction)
         {
-            string queryString = "insert into EVENT_TRANSACTIONS values(1,:T_RGID,CURRENT_TIMESTAMP,:T_CD,:T_ST,:T_LN) RETURNING TransactionID INTO :id";
+            string queryString = "insert into EVENT_TRANSACTIONS values(1,:T_RGID,CURRENT_TIMESTAMP,:T_CD,:T_ST,:T_LN,:T_AC) RETURNING TransactionID INTO :id";
             string Response = "";
             using (OracleConnection connection = new OracleConnection(connectionString))
             using (OracleCommand command = new OracleCommand(queryString, connection))
@@ -325,6 +325,7 @@ namespace LouACH.DataBaseTransactions
                 command.Parameters.Add("T_CD", transaction.TransactionCode);
                 command.Parameters.Add("T_ST", transaction.AmountPaid);
                 command.Parameters.Add("T_LN", transaction.LineItem);
+                command.Parameters.Add("T_AC", transaction.AccountID);
                 command.Parameters.Add(new OracleParameter
                     (
                         ":id",

@@ -56,7 +56,7 @@ namespace LouACH
                         RegistrationID = LouACH.RegistrationPay.registration.RegistrationID,
                         AmountPaid = 200.00m,
                         LineItem = "Guest Meal",   //" + Request.Form["gName"] + " meal(" + Request.Form["gMeal"] + ")",
-                        AccountID="1"
+                        AccountID=1
                     };
                     Transaction.TransactionID = Convert.ToInt32(LouACH.DataBaseTransactions.DataBase.SaveTransaction(Transaction));
                     //allTransactions.Add(Transaction1);
@@ -73,7 +73,7 @@ namespace LouACH
                         RegistrationID=LouACH.RegistrationPay.registration.RegistrationID,
                         AmountPaid= System.Convert.ToDecimal(Request.Form["PIASCDonate"]),
                         LineItem = "PIASC Donation",
-                        AccountID = "2"
+                        AccountID = 2
                     };
                     Transaction.TransactionID = Convert.ToInt32(LouACH.DataBaseTransactions.DataBase.SaveTransaction(Transaction));
 
@@ -86,7 +86,7 @@ namespace LouACH
                         RegistrationID=LouACH.RegistrationPay.registration.RegistrationID,
                         AmountPaid= System.Convert.ToDecimal(Request.Form["IPMDonate"]),
                         LineItem = "IPM Donatation",
-                        AccountID = "2"
+                        AccountID = 2
                     };
                     Transaction.TransactionID = Convert.ToInt32(LouACH.DataBaseTransactions.DataBase.SaveTransaction(Transaction));
 
@@ -99,7 +99,7 @@ namespace LouACH
                         RegistrationID=LouACH.RegistrationPay.registration.RegistrationID,
                         AmountPaid= System.Convert.ToDecimal(Request.Form["PPACDonate"]),
                         LineItem = "PPAC Donatation",
-                        AccountID = "2"
+                        AccountID = 2
                     };
                     Transaction.TransactionID = Convert.ToInt32(LouACH.DataBaseTransactions.DataBase.SaveTransaction(Transaction));
 

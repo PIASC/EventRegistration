@@ -12,6 +12,6 @@ namespace LouACH.Events
         public string TransactionCode;
         public decimal AmountPaid;
         public string LineItem;
-        public string AccountID;
+        public int AccountID;
     }
 } 
