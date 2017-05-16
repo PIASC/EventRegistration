@@ -75,16 +75,35 @@
     <Content Include="bin\Oracle.ManagedDataAccess.EntityFramework.dll" />
     <Content Include="bin\SampleCode.exe" />
     <Content Include="bin\SampleCode.vshost.exe" />
+    <Content Include="bio.html" />
+    <Content Include="club.html" />
+    <Content Include="dress.html" />
     <Content Include="EventMakePayment.aspx" />
     <Content Include="EventReceipt.aspx" />
     <Content Include="EventReceiptNoCharge.aspx" />
     <Content Include="EventRegistration.aspx" />
+    <Content Include="hotels.html" />
+    <Content Include="images\bonaventure.png" />
+    <Content Include="images\flourish.gif" />
+    <Content Include="images\flourish.png" />
+    <Content Include="images\hiltonCheckers.png" />
+    <Content Include="images\JonathanClub.jpg" />
+    <Content Include="images\LindgrenPhotos.png" />
+    <Content Include="images\marriott.png" />
+    <Content Include="images\millenium.png" />
+    <Content Include="images\ornament.png" />
+    <Content Include="images\RetirementDinnerHeader.png" />
+    <Content Include="images\RobertLindgren.jpg" />
+    <Content Include="images\scroll.png" />
+    <Content Include="images\Sheraton.png" />
+    <Content Include="index.html" />
     <Content Include="Main.aspx" />
     <Content Include="packages\AuthorizeNet.1.9.1\lib\AuthorizeNet.dll" />
     <Content Include="packages\AuthorizeNet.1.9.1\lib\AuthorizeNet.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="RegistrationPay.aspx" />
+    <Content Include="retirement.css" />
     <Content Include="StyleSheetMIN.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

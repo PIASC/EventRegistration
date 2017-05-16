@@ -131,7 +131,7 @@ namespace LouACH
         }
         public void bChargeCC_click(object sender, EventArgs e)
         {
-            var response = net.authorize.sample.ChargeCreditCard.Run(apiLoginId, transactionKey, Amount,"1");
+            var response = net.authorize.sample.ChargeCreditCard.Run(apiLoginId, transactionKey, Amount);
 
         }
  
