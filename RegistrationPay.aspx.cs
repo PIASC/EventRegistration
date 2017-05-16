@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using LouACH;
+
 namespace LouACH
 {
     public partial class RegistrationPay : System.Web.UI.Page
@@ -43,6 +43,7 @@ namespace LouACH
                     Amount = 0.00m,
                     LineItems = "Meal:" + Request.Form["rMeal"]
                 };
+                Meal = Request.Form["rMeal"];
                 registration.RegistrationID = Convert.ToInt32(LouACH.DataBaseTransactions.DataBase.GetRegistrationID(registration));
 
                 if (Request.Form["txtGuestName"] != "")
@@ -57,32 +58,6 @@ namespace LouACH
                     registration.Amount = AmountDue;
                 };
 
-                //foreach (string s in Request.Form.Keys)
-                //{
-                //    if (s == "txtFName")
-                //    {
-                //        fName = Request.Form["txtFName"];
-                //    }
-                //    else if (s == "txtLName")
-                //    {
-                //        lName = Request.Form["txtLName"];
-                //    }
-                //    else if (s == "txtGuestName" && Request.Form["txtGuestName"] != "")
-                //    {
-                //        gName = Request.Form["txtGuestName"];
-                //        gMeal =Request.Form["gMeal"];
-                //        sgName = " and " + Request.Form["txtGuestName"];
-                //        sgMeal = " and " + Request.Form["gMeal"];
-                //        gAmount = 200.00m;
-                //        AmountDue = 200.00m;
-                //    }
-                //    else if (s == "rMeal")
-                //    {
-                //        sMeal = "Selected meal: " + Request.Form["rMeal"];
-                //        Meal = Request.Form["rMeal"];
-                //    }
-
-                //For Test  Response.Write(s.ToString() + ":" + Request.Form[s] + " ");
             }
         }
 

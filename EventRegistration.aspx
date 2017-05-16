@@ -95,8 +95,7 @@
          }
          fRegister.action = 'RegistrationPay.aspx';
          fRegister.submit();
-         //window.location.href = 'RegistrationPay.aspx';
-     }
+         }
 
  
 </script>
@@ -153,12 +152,12 @@
                             <p><strong>R.S.V.P.</strong></p>
                             <div>
                                 <p>
-                                    <label for="txtCoName">Your Name:</label>
+                                    <label for="txtCoName" class="HGLabel">Your Name:</label>
                                     <input class="TxtArea" id="txtFName" name="txtFName" style="width: 220px" placeholder="First Name" />&nbsp;<input class="TxtArea" id="txtLName" name="txtLName" style="width: 220px" placeholder="Last Name" /><br />
-                                    <label for="txtCoName">Company:</label>
-                                    <input class="TxtArea" name="txtCoName" id="txtCoName" style="width: 456px" /><br />
-                                    <label for="txtCoName">Email:</label>
-                                    <input class="TxtArea" id="txtEMail" name="txtEMail" style="width: 483px" />
+                                    <label for="txtCoName" class="HGLabel">&nbsp;&nbsp;&nbsp;Company:</label>
+                                    <input class="TxtArea" name="txtCoName" id="txtCoName" style="width: 445px" /><br />
+                                    <label for="txtCoName" class="HGLabel">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email:</label>
+                                    <input class="TxtArea" id="txtEMail" name="txtEMail" style="width: 445px" />
                                 </p>
                                 <p>
                                     <label class="RadioLabel"><strong>Select Meal:</strong></label><br>
@@ -187,14 +186,15 @@
                                 </div>
 
                                 <div>
-                                    <input id="ButtonReserve" type="button" class="button" value="R.S.V.P." onclick="GoToNext()" />
+                                    <input id="ButtonReserve" type="button" class="button" value="R.S.V.P." style="display:none" onclick="GoToNext()" />
                                 </div>
                             </div>
-    </form>
+
     <p><span style="color: #ed1c24; font-size: 10px;">Cancellation Policy: PIASC must receive cancellations 48 hours prior to the event to receive a full refund.</span></p>
-
-
-    </div></div><br />
+    </div>
+    </div>
+    </div>
+    </div><br />
     <br />
     </section>
     <div id="subFooter" class="fluid">
@@ -204,6 +204,6 @@
     <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
-
+        </form>
 </body>
 </html>

@@ -67,29 +67,7 @@ using LouACH;
                     if(response.transactionResponse.messages != null)
                     {
                         LouACH.EventReceipt.TransactionMessage =  response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
-                    //    if (Account=="1")
-                    //    {LouACH.EventReceipt.TransactionCode1 = response.transactionResponse.transId;
-                    //     LouACH.EventReceipt.TransactionMessage1 = "Guest Reservation: $200" + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
-                    //    }
-                    //    else if (Account == "2")
-                    //    {
-                    //        LouACH.EventReceipt.TransactionCode2 = response.transactionResponse.transId;
-                    //        LouACH.EventReceipt.TransactionMessage2 = "PIASC Donation: " + amount.ToString("C") + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
-                    //    }
-                    //    else if (Account == "3")
-                    //    {
-                    //        LouACH.EventReceipt.TransactionCode3 = response.transactionResponse.transId;
-                    //        LouACH.EventReceipt.TransactionMessage3 = "IPM Donation: " + amount.ToString("C") + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
-                    //    }
-                    //    else if (Account == "4")
-                    //    {
-                    //        LouACH.EventReceipt.TransactionCode4 = response.transactionResponse.transId;
-                    //        LouACH.EventReceipt.TransactionMessage4 = "PPAC Donation: " + amount.ToString("C") + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
-                    //    }
-                    //}
-                    //else
-                    //{
-
+ 
                        //LouACH.EventMakePayment.sOutput = "Failed Transaction.";
                         if (response.transactionResponse.errors != null)
                         {
@@ -101,15 +79,11 @@ using LouACH;
                 {
                     if (response.transactionResponse != null && response.transactionResponse.errors != null)
                     {
-                        //Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
-                        //Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
                         LouACH.EventReceipt.TransactionMessage ="Transaction Error: " + response.transactionResponse.errors[0].errorText;
                         
                     }
                     else
                     {
-                        //Console.WriteLine("Error Code: " + response.messages.message[0].code);
-                        //Console.WriteLine("Error message: " + "Error Code: " + response.messages.message[0].Text);
                         LouACH.EventReceipt.TransactionMessage ="Transaction Error: " + response.transactionResponse.errors[0].errorText;
 
                     }
@@ -117,7 +91,6 @@ using LouACH;
             }
             else
             {
-                //Console.WriteLine("Null Response.");
                LouACH.EventReceipt.TransactionMessage ="Transaction Error: No Response";
 
             }

@@ -73,40 +73,39 @@
 
 <section class="fluid">
 
-<div class="gridContainer clearfix">
+   <div class="gridContainer clearfix">
 
-<div id="main" class="fluid ">
-    <div id="centered">
-<div class="fluid" >
-<p><strong>RECEIPT</strong></p>
-        <p>for Bob Lindgren's Retirement Dinner<p />
-        <p>Friday, June 16, 2017 | 5:00PM<br/>
-        Jonathan Club<br/>
-        545 S. Figueroa Street<br/>
-        Los Angeles, CA 90071</p>
+     <div id="main" class="fluid ">
+       <div id="centered">
+         <div class="fluid" >
+             <p><strong>RECEIPT</strong></p>
+             <p>for Bob Lindgren's Retirement Dinner<p />
+             <p>Friday, June 16, 2017 | 5:00PM<br/>
+                Jonathan Club<br/>
+                545 S. Figueroa Street<br/>
+                Los Angeles, CA 90071</p>
+
+            <div class="divCentered" style="top:140px">
+               <p><strong>Reservation for:</strong> <%=customerAddress.firstName %> <%=customerAddress.lastName %> <%=sgName %><br />
+                <strong>Meal Selection:</strong> <%=Meal%> <%=sgMeal %><br /><br />
+                <strong>***PAYMENT SUMMARY***</strong>
+              </p>
+
+              <p><strong>Transaction Date:</strong> <%=DateTime.Now.ToString("MMM dd,yyyy HH:mm")%><br />
+                 <strong>Credit Card:</strong> ****<%=CC.Substring(CC.Length - 4)%><br />
+                 <strong>Total Amount:</strong> <%=sAmountDue%>
+             </p>
       
-
-        <div class="divCentered" style="top:140px">
-            <p><strong>Reservation for:</strong> <%=customerAddress.firstName %> <%=customerAddress.lastName %> <%=sgName %><br />
-                <strong>Meal Selection:</strong> <%=Meal %> <%=sgMeal %><br /><br />
-                
-                ***PAYMENT SUMMARY***
-
-            </p><br />
-
-            <p><strong>Transaction Date:</strong> <%=DateTime.Now.ToString("MMM dd,yyyy HH:mm")%><br />
-            <strong>Credit Card:</strong> ****<%=CC.Substring(CC.Length - 4)%><br />
-            <strong>Total Amount:</strong> <%=sAmountDue%></p><br /><br />
-      
-            <p>ITEM<br />
-            <div class="ItemText">
-            <% =TransactionMessages%></div>
-            </div>
+             <h2><strong>ITEM</strong></h2>
+                <div class="ItemText">
+                   <% =TransactionMessages%>
+              </div>                                 
+           </div>
         </div>
-    
-
-    </form>
-    </div></div><br /><br /></section>
+    </div>
+ </div>
+       <br /><br /></section>
+ </form>
 <div id="subFooter" class="fluid"><p>Bob Lindgren Retirement Dinner | Jonathan Club  | 545 S. Figueroa Street, Los Angeles, CA 90071 | 323.728.9500, Ext. 229</p></div>
 <script src="../js/vendor/jquery-1.11.1.min.js"></script>
 <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
