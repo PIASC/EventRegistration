@@ -17,7 +17,7 @@ namespace LouACH
         {
 
             fName = LouACH.RegistrationPay.person.PersonfName;
-            lName = LouACH.RegistrationPay.person.PersonfName;
+            lName = LouACH.RegistrationPay.person.PersonlName;
             Meal = LouACH.RegistrationPay.registration.LineItems;
 
             //foreach (string s in Request.QueryString)
