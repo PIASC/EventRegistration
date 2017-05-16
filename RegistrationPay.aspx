@@ -10,7 +10,6 @@
          {
              fSummary.action = 'EventMakePayment.aspx';
              fSummary.submit();
-             //window.location.href = 'RegistrationPay.aspx';
          }
 
 </script>
@@ -56,7 +55,7 @@ This dynamic museum is devoted to bringing the history of books, printing, and t
 
        <p>PrintPAC   
        
-            <asp:DropDownList ID="PPACDonate" name="PPACDonate" AutoPostBack="True"  OnSelectedIndexChanged="PIASCAddToTotal" runat="server">
+            <asp:DropDownList ID="PPACDonate" name="PPACDonate" AutoPostBack="True"  OnSelectedIndexChanged="PIASCAddToTotal" runat="server" >
                         <asp:ListItem Text="0" Value="0" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="$50" Value="50"></asp:ListItem>
                         <asp:ListItem Text="$100" Value="100"></asp:ListItem>

@@ -69,6 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\AuthorizeNet.dll" />
+    <Content Include="bin\LouACH.dll" />
+    <Content Include="bin\LouACH.pdb" />
+    <Content Include="bin\Oracle.ManagedDataAccess.dll" />
+    <Content Include="bin\Oracle.ManagedDataAccess.EntityFramework.dll" />
+    <Content Include="bin\SampleCode.exe" />
+    <Content Include="bin\SampleCode.vshost.exe" />
     <Content Include="EventMakePayment.aspx" />
     <Content Include="EventReceipt.aspx" />
     <Content Include="EventReceiptNoCharge.aspx" />
@@ -164,6 +170,11 @@
     <Compile Include="EventRegistration.aspx.designer.cs">
       <DependentUpon>EventRegistration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Events\Registration.cs" />
+    <Compile Include="Events\Company.cs" />
+    <Compile Include="Events\Event.cs" />
+    <Compile Include="Events\EventTransaction.cs" />
+    <Compile Include="Events\Person.cs" />
     <Compile Include="Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -198,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages\AuthorizeNet.1.9.1\AuthorizeNet.1.9.1.nupkg" />
+    <Content Include="bin\LouACH.dll.config" />
     <None Include="Properties\PublishProfiles\TestLou.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

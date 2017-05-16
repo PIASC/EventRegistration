@@ -47,8 +47,7 @@
                  alert('Please Credit Card No (no spaces)');
                  return false;
              }
-             //if (CCExp == '' || CCExp.substring(2, 3) !== '/') {
-               if (CCExp == ''||  isNaN(CCExp)) {
+                if (CCExp == ''||  isNaN(CCExp)) {
                      alert('Please Credit Card Expiration date (mmyy)');
                  return false;
              }

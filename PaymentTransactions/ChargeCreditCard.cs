@@ -12,10 +12,8 @@ using LouACH;
 {
     public class ChargeCreditCard
     {
-        public static ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount,string Account )
+        public static ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount )
         {
-            //Console.WriteLine("Charge Credit Card Sample");
-
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
             //ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
 
@@ -27,13 +25,7 @@ using LouACH;
                 Item = ApiTransactionKey,
             };
             ;
-            //var creditCard = new creditCardType
-            //{
-            //    cardNumber = "0",
-            //    expirationDate = "0718",
-            //    cardCode = "123"
-            //};
-
+ 
             creditCardType creditCard;
             creditCard = LouACH.EventReceipt.creditCard;
 
@@ -41,22 +33,9 @@ using LouACH;
             billingAddress = LouACH.EventReceipt.customerAddress;
 
 
-            //var billingAddress = new customerAddressType
-            //{
-            //    firstName = "John",
-            //    lastName = "Doe",
-            //    address = "123 My St",
-            //    city = "OurTown",
-            //    zip = "98004"
-            //};
-
-            //standard api call to retrieve response
+             //standard api call to retrieve response
             var paymentType = new paymentType { Item = creditCard };
 
-            // Add line Items
-            //var lineItems = new lineItemType[2];
-            //lineItems[0] = new lineItemType { itemId = "1", name = "t-shirt", quantity = 2, unitPrice = new Decimal(15.00) };
-            //lineItems[1] = new lineItemType { itemId = "2", name = "snowboard", quantity = 1, unitPrice = new Decimal(450.00) };
             var lineItems = new lineItemType[1];
             lineItems[0] = LouACH.EventReceipt.lineItems;
                    
@@ -87,61 +66,60 @@ using LouACH;
                 {
                     if(response.transactionResponse.messages != null)
                     {
-                        //Console.WriteLine("Successfully created transaction with Transaction ID: " + response.transactionResponse.transId);
-                        //Console.WriteLine("Response Code: " + response.transactionResponse.responseCode);
-                        //Console.WriteLine("Message Code: " + response.transactionResponse.messages[0].code);
-                        //Console.WriteLine("Description: " + response.transactionResponse.messages[0].description);
-                        //Console.WriteLine("Success, Auth Code : " + response.transactionResponse.authCode);
-                        if (Account=="1")
-                        {LouACH.EventReceipt.TransactionCode1 = response.transactionResponse.transId;
-                         LouACH.EventReceipt.TransactionMessage1 = "Guest Reservation: $200" + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
-                        }
-                        else if (Account == "2")
-                        {
-                            LouACH.EventReceipt.TransactionCode2 = response.transactionResponse.transId;
-                            LouACH.EventReceipt.TransactionMessage2 = "PIASC Donation: " + amount.ToString("C") + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
-                        }
-                        else if (Account == "3")
-                        {
-                            LouACH.EventReceipt.TransactionCode3 = response.transactionResponse.transId;
-                            LouACH.EventReceipt.TransactionMessage3 = "IPM Donation: " + amount.ToString("C") + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
-                        }
-                        else if (Account == "4")
-                        {
-                            LouACH.EventReceipt.TransactionCode4 = response.transactionResponse.transId;
-                            LouACH.EventReceipt.TransactionMessage4 = "PPAC Donation: " + amount.ToString("C") + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
-                        }
-                    }
-                    else
-                    {
-                        //Console.WriteLine("Failed Transaction.");
+                        LouACH.EventReceipt.TransactionMessage =  response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
+                    //    if (Account=="1")
+                    //    {LouACH.EventReceipt.TransactionCode1 = response.transactionResponse.transId;
+                    //     LouACH.EventReceipt.TransactionMessage1 = "Guest Reservation: $200" + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
+                    //    }
+                    //    else if (Account == "2")
+                    //    {
+                    //        LouACH.EventReceipt.TransactionCode2 = response.transactionResponse.transId;
+                    //        LouACH.EventReceipt.TransactionMessage2 = "PIASC Donation: " + amount.ToString("C") + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
+                    //    }
+                    //    else if (Account == "3")
+                    //    {
+                    //        LouACH.EventReceipt.TransactionCode3 = response.transactionResponse.transId;
+                    //        LouACH.EventReceipt.TransactionMessage3 = "IPM Donation: " + amount.ToString("C") + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
+                    //    }
+                    //    else if (Account == "4")
+                    //    {
+                    //        LouACH.EventReceipt.TransactionCode4 = response.transactionResponse.transId;
+                    //        LouACH.EventReceipt.TransactionMessage4 = "PPAC Donation: " + amount.ToString("C") + response.transactionResponse.messages[0].description + "(Transaction ID: " + response.transactionResponse.transId + ")";
+                    //    }
+                    //}
+                    //else
+                    //{
+
                        //LouACH.EventMakePayment.sOutput = "Failed Transaction.";
                         if (response.transactionResponse.errors != null)
                         {
-                            //Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
-                            //Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
-                            
+                            LouACH.EventReceipt.TransactionMessage = "Failed Transaction";
                         }
                     }
                 }
                 else
                 {
-                    //Console.WriteLine("Failed Transaction.");
                     if (response.transactionResponse != null && response.transactionResponse.errors != null)
                     {
                         //Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
                         //Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
+                        LouACH.EventReceipt.TransactionMessage ="Transaction Error: " + response.transactionResponse.errors[0].errorText;
+                        
                     }
                     else
                     {
                         //Console.WriteLine("Error Code: " + response.messages.message[0].code);
                         //Console.WriteLine("Error message: " + "Error Code: " + response.messages.message[0].Text);
+                        LouACH.EventReceipt.TransactionMessage ="Transaction Error: " + response.transactionResponse.errors[0].errorText;
+
                     }
                 }
             }
             else
             {
                 //Console.WriteLine("Null Response.");
+               LouACH.EventReceipt.TransactionMessage ="Transaction Error: No Response";
+
             }
 
             return response;

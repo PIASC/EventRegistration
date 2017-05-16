@@ -223,6 +223,149 @@ namespace LouACH.DataBaseTransactions
                 //    }
                 //    return dtusertables;
                 //}
-   
+        public static LouACH.Events.Event GetEvent(string sEventID)
+        {
+            string queryString = "select * From EVENTS where EventID=" + sEventID;
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                connection.Open();
+                OracleDataReader reader;
+                reader = command.ExecuteReader();
+
+                reader.Read();
+                var thisEvent = new LouACH.Events.Event
+                {
+ 		        EventName= reader.GetString(1),
+		        EventVenueName= reader.GetString(3),
+		        //EventVenueAddress= reader.GetString(7);
+		        //EventVenueCity= reader.GetString(7);
+		        //EventVenueState= reader.GetString(7);
+		        //EventVenueZip= reader.GetString(7);
+                EventVenueDateTime = reader.GetDateTime(2)
+                  };
+                reader.Close();
+                return thisEvent;
+            };
+        }
+        public static string WriteEventTransactionDataNoCharge(LouACH.Events.Registration registration)
+        {
+            string queryString = "insert into EVENT_REGISTRATION (RegistrationID,EventID,PersonID,RegistrationDate) values(1,:EV_ID,:P_ID,CURRENT_TIMESTAMP)";
+
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleCommand command = new OracleCommand(queryString, connection))
+            {
+                //command.Parameters.Add("REG_NO", EventTransaction.routingNumber);
+                //command.Parameters.Add("EV_ID", EventTransaction.EventID);
+                //command.Parameters.Add("P_ID", EventTransaction.AttendeeID);
+                //command.Parameters.Add("AMT", EventTransaction.AmountPaid);
+                //command.Parameters.Add("REG_NO", 5);
+                command.Parameters.Add("EV_ID", registration.EventID);
+                command.Parameters.Add("P_ID", registration.PersonID);
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+                command.Connection.Close();
+            }
+            return "Success";
+        }
+        public static string GetPersonID(LouACH.Events.Person  person)
+        {
+            string queryString = "insert into PERSON(PersonID,FirstName,LastName,EMail) values(1,:P_FN,:P_LN,:P_EM) RETURNING PersonID INTO :id" ;
+            string Response = "";
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleCommand command = new OracleCommand(queryString, connection))
+            {
+                command.Parameters.Add("P_FN", person.PersonfName);
+                command.Parameters.Add("P_LN", person.PersonlName);
+                command.Parameters.Add("P_EM", person.PersonEMail);
+                command.Parameters.Add(new OracleParameter
+                    (
+                        ":id",
+                        OracleDbType.Int32,
+                        ParameterDirection.Output
+                    ));
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+                Response=command.Parameters[":id"].Value.ToString();
+                command.Connection.Close();
+            }
+            return Response;
+        }
+        public static string GetRegistrationID(LouACH.Events.Registration registration)
+        {
+            string queryString = "insert into EVENT_REGISTRATION values(1,:R_EVID,:R_PID,CURRENT_TIMESTAMP,:R_AMT) RETURNING RegistrationID INTO :id";
+            string Response = "";
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleCommand command = new OracleCommand(queryString, connection))
+            {
+                command.Parameters.Add("R_EVID", registration.EventID);
+                command.Parameters.Add("R_PID", registration.PersonID);
+                command.Parameters.Add("R_AMT", registration.Amount);
+                command.Parameters.Add(new OracleParameter
+                    (
+                        ":id",
+                        OracleDbType.Int32,
+                        ParameterDirection.Output
+                    ));
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+                Response = command.Parameters[":id"].Value.ToString();
+                command.Connection.Close();
+            }
+            return Response;
+        }
+        public static string SaveTransaction(LouACH.Events.EventTransaction transaction)
+        {
+            string queryString = "insert into EVENT_TRANSACTIONS values(1,:T_RGID,CURRENT_TIMESTAMP,:T_CD,:T_ST,:T_LN) RETURNING TransactionID INTO :id";
+            string Response = "";
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleCommand command = new OracleCommand(queryString, connection))
+            {
+                command.Parameters.Add("T_RGID", transaction.RegistrationID);
+                command.Parameters.Add("T_CD", transaction.TransactionCode);
+                command.Parameters.Add("T_ST", transaction.AmountPaid);
+                command.Parameters.Add("T_LN", transaction.LineItem);
+                command.Parameters.Add(new OracleParameter
+                    (
+                        ":id",
+                        OracleDbType.Int32,
+                        ParameterDirection.Output
+                    ));
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+                Response = command.Parameters[":id"].Value.ToString();
+                command.Connection.Close();
+            }
+            return Response;
+        }
+        public static string UpdateTransaction(LouACH.Events.EventTransaction transaction)
+        {
+            string queryString = "UPDATE EVENT_TRANSACTIONS set TransactionCode =:T_CD) where TransactionID =  :keyValue";
+            string Response = "";
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleCommand command = new OracleCommand(queryString, connection))
+            {
+                command.Parameters.Add("T_CD", transaction.TransactionCode);
+                command.Parameters.Add("keyValue", transaction.TransactionID);
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+                command.Connection.Close();
+            }
+            return Response;
+        }
+        public static OracleDataReader GetTransactions()
+        {
+            OracleDataReader dataReader;
+            string queryString = "Select * FROM EVENT_TRANSACTIONS where RegistrationID = " + LouACH.RegistrationPay.registration.RegistrationID;
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleCommand command = new OracleCommand(queryString, connection))
+            {
+                command.Connection.Open();
+                dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                return dataReader;
+                //command.Connection.Close();
+            }
+
+        }
     }
 }

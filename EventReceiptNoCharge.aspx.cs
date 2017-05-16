@@ -15,29 +15,30 @@ namespace LouACH
  
         protected void Page_Load(object sender, EventArgs e)
         {
-            foreach (string s in Request.QueryString)
-            {
 
-                if (s == "fName")
-                {
-                    fName = Request.Form["fName"];
-                }
-                else if (s == "lName")
-                {
-                    lName = Request.Form["lName"];
-                }
-                else if (s == "Meal")
-                {
-                    Meal = Request.Form["Meal"];
-                }
+            fName = LouACH.RegistrationPay.person.PersonfName;
+            lName = LouACH.RegistrationPay.person.PersonfName;
+            Meal = LouACH.RegistrationPay.registration.LineItems;
 
-                else
-                {
-                    //
-                }
-                //Response.Write(s.ToString() + ":" + Request.QueryString[s] + " ");
+            //foreach (string s in Request.QueryString)
+            //{
 
+            //    if (s == "fName")
+            //    {
+            //        fName = Request.Form["fName"];
+            //    }
+            //    else if (s == "lName")
+            //    {
+            //        lName = Request.Form["lName"];
+            //    }
+            //    else if (s == "Meal")
+            //    {
+            //        Meal = Request.Form["Meal"];
+            //    }
+
+                // FOR TEST  Response.Write(s.ToString() + ":" + Request.QueryString[s] + " ");
             }
+            string response = LouACH.DataBaseTransactions.DataBase.WriteEventTransactionDataNoCharge(LouACH.RegistrationPay.registration);
+
         }
     }
-}

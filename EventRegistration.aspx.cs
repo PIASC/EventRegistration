@@ -9,9 +9,11 @@ namespace LouACH
 {
     public partial class EventRegistration : System.Web.UI.Page
     {
+        public static LouACH.Events.Event thisEvent = LouACH.DataBaseTransactions.DataBase.GetEvent("1");
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
     }
 }

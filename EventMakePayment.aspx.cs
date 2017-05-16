@@ -34,8 +34,12 @@ namespace LouACH
         public static string PIASC = "0.00";
         public static string IPM = "0.00";
         public static string PPAC = "0.00";
-        public static decimal AmountDue = 0.00m;     
-
+        public static decimal AmountDue = 0.00m;
+        public static LouACH.Events.EventTransaction Transaction1;
+        public static LouACH.Events.EventTransaction Transaction2;
+        public static LouACH.Events.EventTransaction Transaction3;
+        public static LouACH.Events.EventTransaction Transaction4;
+        public static List<Events.EventTransaction> allTransactions;
         protected void Page_Load(object sender, EventArgs e)
         {
             //customerAddress = new customerAddressType
@@ -55,61 +59,86 @@ namespace LouACH
             //cardCode = "123"
             //};
 
+            fName = LouACH.RegistrationPay.person.PersonfName;
+            lName = LouACH.RegistrationPay.person.PersonlName;
+            Meal = LouACH.RegistrationPay.registration.LineItems;
 
-            //var response = net.authorize.sample.ChargeCreditCard.Run(apiLoginId, transactionKey, 100);
-            foreach (string s in Request.Form.Keys)
+            AmountDue = LouACH.RegistrationPay.registration.Amount;
+            if (AmountDue == 0.00m)
             {
-                if (s == "fName")
+                Server.Transfer("EventReceiptNoCharge.aspx?fName=" + fName + "&lName=" + lName + "&Meal=" + Meal, true);
+            }
+            {
+                sAmountDue = AmountDue.ToString("0.##");
+            }
+            
+            List<Events.EventTransaction> allTransactions = new List<Events.EventTransaction> ();
+
+                    //foreach (transaction eTransaction in allTransactions)
+                    //{
+                    //}
+                if (Request.Form["gName"] != "")
                 {
-                    fName = Request.Form["fName"];
-                }
-                else if (s == "lName")
-                {
-                    lName = Request.Form["lName"];
-                }
-                else if (s == "AmountDue")
-                {
-                    sAmountDue = Request.Form["AmountDue"];
-                    AmountDue = System.Convert.ToDecimal(sAmountDue);
-                    if (AmountDue == 0.00m)
+                    Transaction1 = new Events.EventTransaction
                     {
-                        Server.Transfer("EventReceiptNoCharge.aspx?fName=" + fName + "&lName=" + lName + "&Meal=" + Meal, true);
-                    }
-                }
-                else if (s == "gName" && Request.Form["gName"] != "")
-                {
-                    //sgName = " and " + Request.Form["gName"];
-                    //sgMeal = " and " + Request.Form["gMeal"];
+                        RegistrationID = LouACH.RegistrationPay.registration.RegistrationID,
+                        AmountPaid = 200.00m,
+                        LineItem = "Guest " + Request.Form["gName"] + " meal(" + Request.Form["gMeal"] + ")",
+                        AccountID="1"
+                    };
+                    
+                    allTransactions.Add(Transaction1);
+                    
                     gName = Request.Form["gName"];
                     gMeal = Request.Form["gMeal"];
 
-                }
-                else if (s == "Meal")
-                {
-                    //sMeal = "Selected meal: " + Request.Form["rMeal"];
-                    Meal = Request.Form["Meal"];
-                }
-                else if (s == "PIASCDonate")
-                {
-                    PIASC = Request.Form["PIASCDonate"];
-                }
-                else if (s == "IPMDonate")
-                {
-                    IPM = Request.Form["IPMDonate"];
-                }
-                else if (s == "PPACDonate")
-                {
-                    PPAC = Request.Form["PPACDonate"];
-                }
-                else
-                {
-                    //
-                }
+                };
+                
+                if (Request.Form["PIASCDonate"] != "0")
+                {  
+                    Transaction2 = new Events.EventTransaction
+                    {
+                        RegistrationID=LouACH.RegistrationPay.registration.RegistrationID,
+                        AmountPaid= System.Convert.ToDecimal(Request.Form["PIASCDonate"]),
+                        LineItem = "PIASC Donation",
+                        AccountID = "2"
+                    };
+                    allTransactions.Add(Transaction2);
 
+                };
+                if (Request.Form["IPMDonate"] != "0")
+                {  
+                    Transaction3 = new Events.EventTransaction
+                    {
+                        RegistrationID=LouACH.RegistrationPay.registration.RegistrationID,
+                        AmountPaid= System.Convert.ToDecimal(Request.Form["IPMDonate"]),
+                        LineItem = "IPM Donatation",
+                        AccountID = "2"
+                    };
+                    allTransactions.Add(Transaction3);
 
+                };
+                 if (Request.Form["PPACDonate"] != "0")
+                {  
+                    Transaction4 = new Events.EventTransaction
+                    {
+                        RegistrationID=LouACH.RegistrationPay.registration.RegistrationID,
+                        AmountPaid= System.Convert.ToDecimal(Request.Form["PPACDonate"]),
+                        LineItem = "PPAC Donatation",
+                        AccountID = "2"
+                    };
+                    allTransactions.Add(Transaction4);
 
-                //Response.Write(s.ToString() + ":" + Request.Form[s] + " ");
-            }      
+                };
+
+                 foreach (Events.EventTransaction eTransaction in allTransactions)
+                 {
+                    //Response.Write(eTransaction.LineItem);
+                     //Write to DB
+                     eTransaction.TransactionID = Convert.ToInt32(LouACH.DataBaseTransactions.DataBase.SaveTransaction(eTransaction));
+                 }
+
+            }
+
         }
     }
-}

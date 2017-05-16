@@ -15,13 +15,11 @@
          button.style.display = CheckGuest.checked ? "none" : "block";
      }
      function ShowHideButton() {
-         var button = document.getElementById("ButtonReserve");
-         //donation.style.display = RadioB.checked ? "block" : "none";0    
+         var button = document.getElementById("ButtonReserve"); 
          button.style.display = "block";
      }
      function ShowHideGuest(RadioB) {
          var button = document.getElementById("ButtonReserve");
-         //donation.style.display = RadioB.checked ? "block" : "none";
          button.style.display = "block";
      }
      function GoToNext() 
@@ -32,11 +30,9 @@
          LName = document.getElementById('txtLName').value;
          Company = document.getElementById('txtCoName').value;
          Email = document.getElementById('txtEMail').value;
-         //emailExp = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([org\net\com\co\.\in])+$/; // to validate email id
          emailExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
          cGuest = document.getElementById('CheckGuest').checked;
          gName = document.getElementById('txtGuestName').value;
-         //alert(document.getElementById('CheckGuest').checked);
          if (FName == '' && LName == '' && Company == '' && Email == '') 
          {
              alert('Enter All Fields');
@@ -94,14 +90,10 @@
     <input id="Radio1" type="radio" name="rMeal"  value="Filet Mignon" onchange="ShowHideButton()"/><label class="RadioLabel">Filet Mignon  </label><input id="Radio2" type="radio" name="rMeal" value="Chilean Sea Bass" onchange="ShowHideButton()" /><label class="RadioLabel">Chilean Sea Bass</label>  <input id="Radio3" type="radio" name="rMeal" value="Vegetarian Pasta"  onchange="ShowHideButton()"/><label class="RadioLabel">Vegetarian Pasta</label><br/>
 <br /><input id="CheckGuest"  name="CheckGuest" type="checkbox" value="1" onchange="ShowHideDiv(this)"/><label class="QuestionLabel">I will be bringing spouse/guest ($200 charge). </label><br /><br />
 
-<div id="guest" class="box3" <%--style="display: none"--%>> 
+<div id="guest" class="box3" > 
 <label for="txtCoName">Guest Name:</label><input class="TxtArea" id="txtGuestName" name="txtGuestName" value=""  style="width:300px"/><br/><label class="RadioLabel">Select Meal:</label><br />
         <input id="Radiog1" type="radio" name="gMeal" value="Filet Mignon" onchange="ShowHideButton()" /><label class="RadioLabel">Filet Mignon  </label><input id="Radiog2" type="radio" name="gMeal" value="Chilean Sea Bass" onchange="ShowHideButton()"  /><label class="RadioLabel">Chilean Sea Bass</label>  <input id="Radiog3" type="radio" name="gMeal" value="Vegetarian Pasta"  onchange="ShowHideButton()" /><label class="RadioLabel">Vegetarian Pasta</label><br/>
 </div>
-<%--<div id="donation" class="box4" style="display: none"> 
-<label for="txtCoName">In lieu of gifts, please support one of Bob Lindgren’s favorite foundations and causes: </label>
- 
-</div>--%>
     <div>
     <input id="ButtonReserve" type="button" class="ResButton" value="Make Reservation" onclick="GoToNext()" />
  </div>
