@@ -14,6 +14,7 @@ namespace net.authorize.sample
         public static string TRANSACTION_ID = "123456";
         public static string PAYER_ID = "6ZSCSYG33VP8Q";
         public static string CONFIG_FILE = "../../SampleCodeList.txt";
-        public static string CONNECTION_STRING = "Data Source=localhost:1521/XE;User Id=HSG_USER1;Password=Hsg45900;";
+        public static string CONNECTION_STRING_Local = "Data Source=localhost:1521/XE;User Id=HSG_USER1;Password=Hsg45900;";
+        public static string CONNECTION_STRING_PIASC = "DATA SOURCE=vmtest1.world;PASSWORD=poster;USER ID=PIA_ADMIN;";
     }
 }

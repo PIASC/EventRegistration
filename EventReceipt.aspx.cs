@@ -48,7 +48,7 @@ namespace LouACH
         public static string IPM = "0.00";
         public static string PPAC = "0.00";
         public static lineItemType lineItems;
-        public static string connectionString = Constants.CONNECTION_STRING;
+        public static string connectionString = Constants.CONNECTION_STRING_Local;
         public static decimal UnitPrice = 0.00m;
 
         protected void Page_Load(object sender, EventArgs e)

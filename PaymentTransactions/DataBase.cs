@@ -16,7 +16,7 @@ namespace LouACH.DataBaseTransactions
     public class DataBase
     {
         //public static string EmployerID = "2";
-        public static string connectionString = Constants.CONNECTION_STRING;
+        public static string connectionString = Constants.CONNECTION_STRING_Local;
         public static bankAccountType ReadBankData()
         {
             string queryString = "select A.*,B.BANKNAME from EMPLOYER A join ROUTINGNOS B on A.TRANSITNO=B.BANKROUTINGNUMBER where EMPLOYERID=" + LouACH.Main.EmployerID;
