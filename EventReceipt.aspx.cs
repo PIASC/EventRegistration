@@ -8,6 +8,10 @@ using AuthorizeNet.Api.Contracts.V1;
 using net.authorize.sample;
 using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
+using System.Net;
+using System.Net.Mail;
+using Microsoft.Office.Interop.Word;
+
 
 namespace LouACH
 {
@@ -56,6 +60,7 @@ namespace LouACH
             string Item = "";
             //decimal UnitPrice = 0.00m;
             int Account = 1;
+            email_send();
             customerAddress = new customerAddressType
             {
                 firstName = LouACH.RegistrationPay.person.PersonfName,  //"John",
@@ -112,6 +117,66 @@ namespace LouACH
                     command.Connection.Close();
                 }
              }
+
+
+            public void email_send()
+            {
+
+
+                //Microsoft.Office.Interop.Word.Document wordDocument = new Microsoft.Office.Interop.Word.Document();
+                
+                //Microsoft.Office.Interop.Word.Application appWord = new Microsoft.Office.Interop.Word.Application();
+                //wordDocument = appWord.Documents.Open(@"D:\desktop\xxxxxx.docx");
+
+                //this.FindAndReplace(wordDocument, "<Date>", "06/12/2017");
+                //wordDocument.ExportAsFixedFormat(@"D:\desktop\DocTo.pdf", WdExportFormat.wdExportFormatPDF);
+                
+                
+                
+                
+                
+                System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("your mail@gmail.com");
+                mail.To.Add("hgoodman@cgc-intl.com");
+                mail.Subject = "Test Mail - 1";
+                mail.Body = "mail with attachment";
+
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment("D:\\HSG\\GPa.txt");
+                mail.Attachments.Add(attachment);
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("hgood", "harvey");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+
+            }
+            private void FindAndReplace(Microsoft.Office.Interop.Word.Application wordApp, object findText, object replaceText)
+            {
+                object matchCase = true;
+                object matchWholeWord = true;
+                object matchWildCards = false;
+                object matchSoundsLike = false;
+                object matchAllWordForms = false;
+                object forward = true;
+                object format = false;
+                object matchKashida = false;
+                object matchDiacritics = false;
+                object matchAlefHamza = false;
+                object matchControl = false;
+                object read_only = false;
+                object visible = true;
+                object replace = 2;
+                object wrap = 1;
+                wordApp.Selection.Find.Execute(ref findText, ref matchCase,
+                    ref matchWholeWord, ref matchWildCards, ref matchSoundsLike,
+                    ref matchAllWordForms, ref forward, ref wrap, ref format,
+                    ref replaceText, ref replace, ref matchKashida,
+                            ref matchDiacritics,
+                    ref matchAlefHamza, ref matchControl);
+            }
         }
     }
 ;

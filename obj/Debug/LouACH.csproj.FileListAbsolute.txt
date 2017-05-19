@@ -4,3 +4,5 @@ D:\CGC\LouACH\LouACH\bin\LouACH.pdb
 D:\CGC\LouACH\LouACH\obj\Debug\LouACH.dll
 D:\CGC\LouACH\LouACH\obj\Debug\LouACH.pdb
 D:\CGC\LouACH\LouACH\obj\Debug\LouACH.csprojResolveAssemblyReference.cache
+D:\CGC\LouACH\LouACH\bin\RestSharp.xml
+D:\CGC\LouACH\LouACH\obj\Debug\LouACH.csproj.ResolveComReference.cache

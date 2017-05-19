@@ -46,11 +46,19 @@
       <HintPath>..\..\LouPrinter\sample-code-csharp-master\AuthorizeNet.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Oracle Developer Tools for VS2013\odp.net\managed\common\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL" />
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -71,6 +79,8 @@
     <Content Include="bin\AuthorizeNet.dll" />
     <Content Include="bin\LouACH.dll" />
     <Content Include="bin\LouACH.pdb" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
     <Content Include="bin\Oracle.ManagedDataAccess.dll" />
     <Content Include="bin\Oracle.ManagedDataAccess.EntityFramework.dll" />
     <Content Include="bin\SampleCode.exe" />
@@ -147,6 +157,7 @@
     <Compile Include="EventRegistration.aspx.designer.cs">
       <DependentUpon>EventRegistration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Events\CardConnectRestClient.cs" />
     <Compile Include="Events\Registration.cs" />
     <Compile Include="Events\Company.cs" />
     <Compile Include="Events\Event.cs" />
@@ -159,6 +170,9 @@
     <Compile Include="Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PaymentTransactions\CardConnectAPI.cs" />
+    <Compile Include="PaymentTransactions\CardConnectRestClient.cs" />
+    <Compile Include="PaymentTransactions\CardConnectRestClientExample.cs" />
     <Compile Include="PaymentTransactions\ChargeCreditCard.cs" />
     <Compile Include="PaymentTransactions\ChargeCustomerProfile.cs" />
     <Compile Include="PaymentTransactions\Constants.cs" />
@@ -176,6 +190,7 @@
   <ItemGroup>
     <Content Include="packages\AuthorizeNet.1.9.1\AuthorizeNet.1.9.1.nupkg" />
     <Content Include="bin\LouACH.dll.config" />
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\TestLou.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -187,7 +202,35 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

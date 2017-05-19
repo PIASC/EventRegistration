@@ -13,7 +13,7 @@ namespace LouACH
         
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            CardConnectRestClientExample.CardConnectRestClientExample.authTransaction();
         }
     }
 }
